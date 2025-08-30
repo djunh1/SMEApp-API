@@ -23,3 +23,15 @@ pip3 install django
 ```
 django-admin startproject api
 ```
+
+4. Don't forget to install the dependencies
+
+```
+pip install -r requirements.txt
+```
+
+5. If desired, install fixtures
+
+```
+python3 API/manage.py loaddata testseed.json
+```

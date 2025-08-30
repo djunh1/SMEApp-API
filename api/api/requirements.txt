@@ -1,0 +1,15 @@
+# Django==5.2.2
+# django-appconf==1.1.0
+djangorestframework==3.16.1
+# djangorestframework_simplejwt==5.5.1
+
+
+#python-dotenv==1.1.1
+
+#The API
+# pandas==2.3.2
+# pandas-market-calendars==4.1.4
+
+
+#requests
+#pytz
