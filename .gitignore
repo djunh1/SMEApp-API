@@ -1,0 +1,8 @@
+API-VENV*
+db.sqlite3
+__pycache__
+*pyc
+.idea
+.tox
+.cache
+.env
