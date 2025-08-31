@@ -1,21 +1,8 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-
 from rest_framework import viewsets
 
-from portfolios.serializers import PortfolioSerializer
-from portfolios.models import Portfolio
+from portfolios.serializers import PortfolioSerializer, ReviewSerializer, StockSerializer
+from portfolios.models import Portfolio, Review, Stock
 
-class PortfoliosOldViewSet(APIView):
-
-    def get(self, request):
-        portfolio = {
-            'id': 12,
-            'title': 'value portfolio'
-        }
-
-        return Response(portfolio)
-    
 
 class PortfoliosViewSet(viewsets.ModelViewSet):
 
@@ -23,3 +10,16 @@ class PortfoliosViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Portfolio.objects.all().order_by('-created_at')
+    
+class ReviewViewSet(viewsets.ModelViewSet):
+
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+class StockViewSet(viewsets.ModelViewSet):
+
+    serializer_class = StockSerializer
+
+    def get_queryset(self):
+        return Stock.objects.all().order_by('-ticker_name', 'sector')
+    

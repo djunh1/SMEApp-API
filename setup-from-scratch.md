@@ -30,8 +30,8 @@ django-admin startproject api
 pip install -r requirements.txt
 ```
 
-5. If desired, install fixtures
+5. If desired, install seed data from the fixtures
 
 ```
-python3 API/manage.py loaddata testseed.json
+python3 manage.py loaddata seeddata.json
 ```
