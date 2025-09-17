@@ -54,3 +54,16 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ['id',
                   'name'
                   ]
+        
+class PortfolioTypeFilterSerializer(serializers.ModelSerializer):
+    '''
+    Specific search for portfolio type 
+    '''
+    class Meta:
+        model = Portfolio
+        fields = ['portfolio_type']
+
+class StockSectorFilterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stock
+        fields = ['sector']

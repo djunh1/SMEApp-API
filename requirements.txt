@@ -4,6 +4,8 @@ djangorestframework==3.16.1
 # djangorestframework_simplejwt==5.5.1
 django-cors-headers==3.13.0
 
+django-filter==25.1
+
 #python-dotenv==1.1.1
 
 #The API
