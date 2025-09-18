@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from portfolios.models import Portfolio, Review, Stock, Tag
+from portfolios.models import Category, Portfolio, Review, Stock, Tag
 
 # TODO-1 eventually add owner to fields.
 class PortfolioSerializer(serializers.ModelSerializer):
@@ -11,9 +11,13 @@ class PortfolioSerializer(serializers.ModelSerializer):
                   'description',
                   'created_at',
                   'updated_at',
-                  'portfolio_type',
+                  'category',
                   'tags'
                   ]
+        
+    def to_representation(self, instance):
+        self.fields['category'] =  CategorySerializer(read_only=True)
+        return super(PortfolioSerializer, self).to_representation(instance)
         
     # def to_representation(self, instance):
     #     self.fields['owner'] = OwnerSerializer(read_only=True)
@@ -67,3 +71,11 @@ class StockSectorFilterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stock
         fields = ['sector']
+
+class CategorySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Category
+        fields = ['id', 
+                  'name', 
+                  'description']

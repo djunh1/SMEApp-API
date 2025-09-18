@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from portfolios.serializers import PortfolioSerializer, PortfolioTypeFilterSerializer, ReviewSerializer, StockSectorFilterSerializer, StockSerializer
-from portfolios.models import Portfolio, Review, Stock
+from portfolios.serializers import CategorySerializer, PortfolioSerializer, PortfolioTypeFilterSerializer, ReviewSerializer, StockSectorFilterSerializer, StockSerializer
+from portfolios.models import Category, Portfolio, Review, Stock
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
@@ -11,13 +11,13 @@ class PortfoliosViewSet(viewsets.ModelViewSet):
     serializer_class = PortfolioSerializer
     filter_backends = {DjangoFilterBackend, filters.SearchFilter}
 
-    filterset_fields = ['name', 'portfolio_type']
+    filterset_fields = ['name', 'category']
 
     def get_queryset(self):
         if(self.request.GET.get('order_by')) == 'updated_at':
             return Portfolio.objects.all().order_by('-updated_at')
         else:
-            return Portfolio.objects.all().order_by('portfolio_type')
+            return Portfolio.objects.all().order_by('category')
     
 class ReviewViewSet(viewsets.ModelViewSet):
 
@@ -30,7 +30,7 @@ class StockViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
 
     # search all stocks by filtering a portfolio type, in this case
-    search_fields = ['portfolio__portfolio_type']
+    search_fields = ['portfolio__category']
 
     def get_queryset(self):
         if (self.request.GET.get('order_by')) == 'sector':
@@ -43,7 +43,7 @@ class StockViewSet(viewsets.ModelViewSet):
             return Stock.objects.all().order_by('-ticker_name')
 
 class PortfolioTypeFilterViewSet(viewsets.ModelViewSet):
-    queryset = Portfolio.objects.values('portfolio_type').distinct()
+    queryset = Portfolio.objects.values('category').distinct()
     serializer_class = PortfolioTypeFilterSerializer
     paginator = None
 
@@ -56,3 +56,8 @@ class PortfolioFilterViewSet(viewsets.ModelViewSet):
     queryset = Portfolio.objects.all()
     serializer_class = PortfolioSerializer
     paginator = None
+
+class CategoryViewSet(viewsets.ModelViewSet):
+
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

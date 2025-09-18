@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 
 ### TODO-1: Add owner once the custom user is created
+### TODO-2 Add category for portfolio?  
 
 PORTOFLIO_TYPE = (
     ('Long Term', 'Long term - hold periods of months to years'),
@@ -9,6 +10,10 @@ PORTOFLIO_TYPE = (
     ('Variable', 'Variable time frames'),
     ('Day Trading', 'Day trading - Short hold times of one day or less'),
 )
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
 
 class Portfolio(models.Model):
     # owner = models.ForeignKey(
@@ -19,6 +24,7 @@ class Portfolio(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     portfolio_type = models.CharField(max_length=200, choices=PORTOFLIO_TYPE, default='Combination of shorter time frames and longer time frames')
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, null=True)
     tags = models.ManyToManyField('Tag',  blank=True)
     
     def __str__(self):

@@ -1,10 +1,43 @@
 [
   {
+      "model": "portfolios.Category",
+      "pk": 1,
+      "fields": {
+        "name": "Long Term",
+        "description": "Equipment needed for successfull practice"
+      }
+    },
+    {
+      "model": "portfolios.Category",
+      "pk": 2,
+      "fields": {
+        "name": "Swing",
+        "description": "All kind of clothing for all seasons"
+      }
+    },
+    {
+      "model": "portfolios.Category",
+      "pk": 3,
+      "fields": {
+        "name": "Value Investing",
+        "description": "Replacable mechanical parts"
+      }
+    },
+    {
+      "model": "portfolios.Category",
+      "pk": 4,
+      "fields": {
+        "name": "Day Trade",
+        "description": "Descriptive instructional books"
+      }
+    },
+  {
     "model": "portfolios.tag",
     "pk": "550e8400-e29b-41d4-a716-446655440001",
     "fields": {
       "name": "Growth",
       "created_at": "2024-01-15T10:30:00Z"
+
     }
   },
   {
@@ -103,6 +136,7 @@
       "created_at": "2024-01-16T10:15:00Z",
       "updated_at": "2024-01-21T11:45:00Z",
       "portfolio_type": "Long Term",
+      "category": 4,
       "tags": [
         "550e8400-e29b-41d4-a716-446655440002",
         "550e8400-e29b-41d4-a716-446655440005",
@@ -119,6 +153,7 @@
       "created_at": "2024-01-17T08:30:00Z",
       "updated_at": "2024-01-22T16:20:00Z",
       "portfolio_type": "Swing",
+      "category": 1,
       "tags": [
         "550e8400-e29b-41d4-a716-446655440001",
         "550e8400-e29b-41d4-a716-446655440004"
@@ -134,6 +169,7 @@
       "created_at": "2024-01-18T07:45:00Z",
       "updated_at": "2024-01-23T09:10:00Z",
       "portfolio_type": "Day Trading",
+      "category": 2,
       "tags": [
         "550e8400-e29b-41d4-a716-446655440003"
       ]
@@ -148,6 +184,7 @@
       "created_at": "2024-01-19T11:20:00Z",
       "updated_at": "2024-01-24T13:55:00Z",
       "portfolio_type": "Long Term",
+      "category": 1,
       "tags": [
         "550e8400-e29b-41d4-a716-446655440006",
         "550e8400-e29b-41d4-a716-446655440001"
@@ -208,6 +245,7 @@
       "created_at": "2024-01-23T10:45:00Z",
       "updated_at": "2024-01-28T08:15:00Z",
       "portfolio_type": "Swing",
+      "category": 3,
       "tags": [
         "550e8400-e29b-41d4-a716-446655440003",
         "550e8400-e29b-41d4-a716-446655440001"
@@ -223,6 +261,7 @@
       "created_at": "2024-01-24T13:30:00Z",
       "updated_at": "2024-01-29T11:40:00Z",
       "portfolio_type": "Variable",
+      "category": 3,
       "tags": [
         "550e8400-e29b-41d4-a716-446655440002",
         "550e8400-e29b-41d4-a716-446655440008"
