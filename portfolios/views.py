@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 
-from portfolios.serializers import CategorySerializer, PortfolioSerializer, PortfolioTypeFilterSerializer, ReviewSerializer, StockSectorFilterSerializer, StockSerializer
+from portfolios.serializers import CategorySerializer, CategorySerializerId, PortfolioSerializer, PortfolioTypeFilterSerializer, ReviewSerializer, StockSectorFilterSerializer, StockSerializer
 from portfolios.models import Category, Portfolio, Review, Stock
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -11,7 +11,8 @@ class PortfoliosViewSet(viewsets.ModelViewSet):
     serializer_class = PortfolioSerializer
     filter_backends = {DjangoFilterBackend, filters.SearchFilter}
 
-    filterset_fields = ['name', 'category']
+    filterset_fields = ['name']
+    search_fields = ['category__name']
 
     def get_queryset(self):
         if(self.request.GET.get('order_by')) == 'updated_at':
@@ -30,7 +31,9 @@ class StockViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
 
     # search all stocks by filtering a portfolio type, in this case
-    search_fields = ['portfolio__category']
+    #TODO add more later. 
+    # filterset_fields = ['ticker_name']
+    search_fields = ['portfolio__name']
 
     def get_queryset(self):
         if (self.request.GET.get('order_by')) == 'sector':
@@ -58,6 +61,22 @@ class PortfolioFilterViewSet(viewsets.ModelViewSet):
     paginator = None
 
 class CategoryViewSet(viewsets.ModelViewSet):
+    '''
+    This populates the portfolio create and edit modals.
+    '''
+    
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CategoryViewSetNotPaged(viewsets.ModelViewSet):
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    paginator = None
+
+class CategoryViewSetNotPagedId(viewsets.ModelViewSet):
+
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializerId
+    paginator = None

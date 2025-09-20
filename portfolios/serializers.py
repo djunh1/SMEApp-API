@@ -76,6 +76,10 @@ class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Category
-        fields = ['id', 
-                  'name', 
-                  'description']
+        fields = ['name']
+
+class CategorySerializerId(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Category
+        fields = ['id']
