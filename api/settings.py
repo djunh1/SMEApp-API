@@ -33,6 +33,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
+    'axes',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'axes.middleware.AxesMiddleware'
     
 ]
 
@@ -70,6 +72,11 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': True,
     'SIGNING_KEY': SECRET_KEY
 }
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
 
 ROOT_URLCONF = 'api.urls'
 
@@ -119,6 +126,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AXES_FAILURE_LIMIT = 5
+AXES_ONLY_USER_FAILURES = True
+AXES_RESET_ON_SUCCESS = True
 
 
 # Internationalization
