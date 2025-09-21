@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'portfolios',
+    'users'
     
 ]
 
@@ -77,6 +78,8 @@ AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend'
 ]
+
+AUTH_USER_MODEL = 'users.user'
 
 ROOT_URLCONF = 'api.urls'
 
