@@ -18,7 +18,7 @@ class PortfoliosViewSet(viewsets.ModelViewSet):
         if(self.request.GET.get('order_by')) == 'updated_at':
             return Portfolio.objects.all().order_by('-updated_at')
         else:
-            return Portfolio.objects.all().order_by('category')
+            return Portfolio.objects.all().order_by('name')
     
 class ReviewViewSet(viewsets.ModelViewSet):
 
@@ -40,10 +40,10 @@ class StockViewSet(viewsets.ModelViewSet):
             return Stock.objects.all().order_by('-sector')
         elif (self.request.GET.get('order_by')) == 'company_name':
             return Stock.objects.all().order_by('-company_name')
-        elif (self.request.GET.get('order_by')) == 'updated_at':
-            return Stock.objects.all().order_by('-updated_at')
+        elif (self.request.GET.get('order_by')) == 'created_at':
+            return Stock.objects.all().order_by('-created_at')
         else:
-            return Stock.objects.all().order_by('-ticker_name')
+            return Stock.objects.all().order_by('ticker_name')
 
 class PortfolioTypeFilterViewSet(viewsets.ModelViewSet):
     queryset = Portfolio.objects.values('category').distinct()
