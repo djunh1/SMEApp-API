@@ -1,7 +1,10 @@
 # Django==5.2.2
 # django-appconf==1.1.0
 djangorestframework==3.16.1
-# djangorestframework_simplejwt==5.5.1
+djangorestframework_simplejwt==5.5.1
+django-axes==8.0.0
+# or 5.25.0...
+
 django-cors-headers==3.13.0
 
 django-filter==25.1
