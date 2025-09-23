@@ -35,3 +35,10 @@ pip install -r requirements.txt
 ```
 python3 manage.py loaddata seeddata.json
 ```
+
+6. Step 5 adds categories, and this step will add a bunch of random stocks and portoflios...
+
+```
+python3 manage.py populate_portfolios_management 50
+python3 manage.py populate_stocks_management 25
+```

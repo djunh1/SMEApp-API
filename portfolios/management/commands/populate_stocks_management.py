@@ -64,8 +64,8 @@ class Command(BaseCommand):
             
             portfolio = portfolio3
 
-            ticker_name = 'UCO' if i == 0 else ('BABA' if i == 1 else ('GTAT' if i == 2 else ('SDRL' if i == 3 else 'SLCA')))
-            company_name = '2x leverage oil' if i == 0 else ('Ali baba' if i == 1 else ('GT Advanced technologies' if i == 2 else ('seadrill' if i == 3 else 'US Silica holdings')))
+            ticker_name = 'SHOP' if i == 0 else ('UBER' if i == 1 else ('GTAT' if i == 2 else ('SDRL' if i == 3 else 'SLCA')))
+            company_name = 'Shopify' if i == 0 else ('Uber' if i == 1 else ('GT Advanced technologies' if i == 2 else ('seadrill' if i == 3 else 'US Silica holdings')))
             sector = 'etf' if i == 0 else ('Electronic Technology' if i == 1 else ('Bankrupt' if i == 2 else ('energy' if i == 3 else 'energy')))
            
             stock = Stock.objects.create(

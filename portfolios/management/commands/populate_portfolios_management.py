@@ -44,8 +44,8 @@ class Command(BaseCommand):
         for i in range(options['n']):
             category = category2
 
-            name = 'Dougs Swing Portoflio' if random.randint(0, 1) == 0 else ('Pradeeps portfolio' if random.randint(0, 1) == 0 else 'Wu tang ifnancial')
-            description = 'Solid long term portfolio' if random.randint(0, 1) == 0 else ('Swing trading only' if random.randint(0, 1) == 0 else 'Via Pairoli 33')
+            name = 'The Fast and the Turious portfolio' if random.randint(0, 1) == 0 else ('George Washingtons Portoflio' if random.randint(0, 1) == 0 else 'Notorious BIG')
+            description = 'A great portoflio' if random.randint(0, 1) == 0 else ('Day trading mostly.  Not sure how to update this...' if random.randint(0, 1) == 0 else 'Du')
             portfolio_type = 'Long Term' if random.randint(0, 1) == 0 else ('Swing' if random.randint(0, 1) == 0 else 'Day Trading')
  
             order = Portfolio.objects.create(
@@ -62,8 +62,8 @@ class Command(BaseCommand):
         for i in range(options['n']):
             category = category2
 
-            name = 'Dougs Swing Portoflio' if random.randint(0, 1) == 0 else ('Pradeeps portfolio' if random.randint(0, 1) == 0 else 'Wu tang ifnancial')
-            description = 'Solid long term portfolio' if random.randint(0, 1) == 0 else ('Swing trading only' if random.randint(0, 1) == 0 else 'Via Pairoli 33')
+            name = 'Dougs Swing Portoflio' if random.randint(0, 1) == 0 else ('Pradeeps 9m EP' if random.randint(0, 1) == 0 else 'Wu tang ifnancial')
+            description = 'Long term portfolio with long term prospects' if random.randint(0, 1) == 0 else ('Swing trading mostly, with some investment' if random.randint(0, 1) == 0 else 'When is a dip coming?')
             portfolio_type = 'Long Term' if random.randint(0, 1) == 0 else ('Swing' if random.randint(0, 1) == 0 else 'Day Trading')
  
             order = Portfolio.objects.create(
