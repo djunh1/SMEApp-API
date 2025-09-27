@@ -50,15 +50,15 @@ class NewUserView(APIView):
         
         return Response({"good"}, status=status.HTTP_200_OK)
 
-class DeleteUserView(APIView):
-    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+# class DeleteUserView(APIView):
+#     permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
-    def delete(self, request, format=None):
-        data = request.data
-        user = User.objects.get(id=data['user_id'])
-        user.delete()
+#     def delete(self, request, format=None):
+#         data = request.data
+#         user = User.objects.get(id=data['user_id'])
+#         user.delete()
 
-        return Response({"good"}, status=status.HTTP_200_OK)
+#         return Response({"good"}, status=status.HTTP_200_OK)
     
 class UpdateUserStatusView(APIView):
     permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
