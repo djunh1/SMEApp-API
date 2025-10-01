@@ -49,16 +49,6 @@ class NewUserView(APIView):
             return Response({'error': error_message}, status=status.HTTP_406_NOT_ACCEPTABLE)
         
         return Response({"good"}, status=status.HTTP_200_OK)
-
-# class DeleteUserView(APIView):
-#     permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
-
-#     def delete(self, request, format=None):
-#         data = request.data
-#         user = User.objects.get(id=data['user_id'])
-#         user.delete()
-
-#         return Response({"good"}, status=status.HTTP_200_OK)
     
 class UpdateUserStatusView(APIView):
     permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
@@ -163,3 +153,14 @@ class ResetUserPasswordView(APIView):
         request.user.save()
 
         return Response({"response": "Successfully updated password"}, status=status.HTTP_200_OK)
+    
+class DeactivateUserView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, format=None):
+        data = request.data
+        user = User.objects.get(username=data['username'])
+        user.is_active = False
+        user.save()
+        return Response({"User deactivated"}, status=status.HTTP_200_OK)
+    
